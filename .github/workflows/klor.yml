@@ -1,5 +1,4 @@
 name: Build KLOR Split Firmware
-
 on:
   push:
     branches:
@@ -26,19 +25,14 @@ on:
         description: 'Layers'
         required: false
         default: '["default"]'
-      settings_reset:
-        description: 'Settings reset option'
-        required: false
-        default: '["default"]'
 
 jobs:
   build:
     uses: ./.github/workflows/main.yml
     secrets: inherit
     with:
-      board: ${{ github.event.inputs.board || '["nice_nano_v2"]' }}
-      shield: ${{ github.event.inputs.shield || '["klor_left","klor_right"]' }}
-      alphas: ${{ github.event.inputs.alphas || '["QWERTY"]' }}
-      nav: ${{ github.event.inputs.nav || '["vi"]' }}
-      layers: ${{ github.event.inputs.layers || '["default"]' }}
-      settings_reset: ${{ github.event.inputs.settings_reset || '["default"]' }}
+      board: ${{ github.event.inputs.board }}
+      shield: ${{ github.event.inputs.shield }}
+      alphas: ${{ github.event.inputs.alphas }}
+      nav: ${{ github.event.inputs.nav }}
+      layers: ${{ github.event.inputs.layers }}
